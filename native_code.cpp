@@ -7,7 +7,7 @@
 int
 exec_native_code(unsigned char *code, size_t len)
 {
-    void *ptr = mmap(0, 10000, PROT_EXEC | PROT_WRITE | PROT_READ, 
+    void *ptr = mmap(0, len, PROT_EXEC | PROT_WRITE | PROT_READ, 
         MAP_ANON | MAP_PRIVATE, -1, 0);
  
     if (ptr == MAP_FAILED) {
