@@ -1,0 +1,4 @@
+*.o
+client
+1.c
+a.out
