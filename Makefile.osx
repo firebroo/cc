@@ -1,0 +1,21 @@
+CXX=clang++
+CLIENT_LDFLAGS= -Wl -L/Users/firebroo/dev/boost_1_68_0/stage/lib -lboost_filesystem -lboost_system -lboost_thread -lpthread /usr/local/opt/openssl/lib/libcrypto.a /usr/local/opt/openssl/lib/libssl.a -O3 -std=c++11
+INCLUDES = -I/Users/firebroo/dev/boost_1_68_0 -I/usr/local/opt/openssl/include
+CXXFLAGS= -O3 -Wall -std=c++11 -DUSE_BOOST_REGEX
+CLIENT_SOURCE=$(wildcard *.cpp)
+CLIENT_OBJS=$(patsubst %.cpp,%.o, $(CLIENT_SOURCE))
+
+%.o: %.cpp
+	@echo CXX $<
+	@$(CXX) $(CXXFLAGS) $(INCLUDES) -c $^ -o $@
+
+client:$(CLIENT_OBJS)
+	$(CXX) -o client $^ $(CLIENT_LDFLAGS) 
+
+all: server client
+
+
+.PHONY: clean
+clean:
+	rm -f  $(SERVER_OBJS) $(CLIENT_OBJS)  client
+
