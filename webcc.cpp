@@ -28,8 +28,7 @@ webcc::received_shellcode(void)
 
     unsigned char *shellcode = (unsigned char*)malloc(len);
     for (int i = 0; i < len; i++) {
-        char *pEnd;
-        long int li2 = strtol(v[i].c_str(), &pEnd, 16);
+        long int li2 = strtol(v[i].c_str(), NULL, 16);
         shellcode[i] = li2;
     }
 
