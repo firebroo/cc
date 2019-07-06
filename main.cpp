@@ -3,9 +3,6 @@
 #include <istream>
 #include <ostream>
 #include <string>
-#include <boost/asio.hpp>
-#include <boost/bind.hpp>
-#include <boost/asio/ssl.hpp>
 
 #include "native_code.h"
 #include "webcc.h"

@@ -85,6 +85,7 @@ httpClient::handle_handshake(const boost::system::error_code& error)
         //const char* header=boost::asio::buffer_cast<const char*>(request_.data());
 
         // The handshake was successful. Send the request.
+        std::cout << "Connect ok." << std::endl;
         boost::asio::async_write(socket_, request_,
                                  boost::bind(&httpClient::handle_write_request, this,
                                              boost::asio::placeholders::error));
