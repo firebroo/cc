@@ -1,5 +1,5 @@
 #!/bin/bash
-if (( "$(uname)" == "Darwin" ))
+if [ "$(uname)" == "Darwin" ]; 
 then
     make -f Makefile.osx -j $1;
 else
